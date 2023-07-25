@@ -35,6 +35,9 @@ public class JFrmClientes extends javax.swing.JFrame {
     }
     
     // <editor-fold defaultstate="collapsed" desc="Metodos locales">
+    void ModificarCliente(){
+        
+    }
     
     void EliminarCliente(){
       
@@ -55,8 +58,9 @@ public class JFrmClientes extends javax.swing.JFrame {
         }
         
         if (posicion >= 0){
-            Cliente aux = ListadoClientes.get(posicion);
+            Cliente aux = ListadoClientes.get(posicion);            
             ListadoClientes.remove(aux);
+            
         }
         
         
@@ -74,6 +78,7 @@ public class JFrmClientes extends javax.swing.JFrame {
         boolean Estado = rbnActivo.isSelected();
         oCliente.setEstado(Estado);
         ListadoClientes.add(oCliente);
+        
         
     }
     
@@ -313,6 +318,11 @@ public class JFrmClientes extends javax.swing.JFrame {
                 "Identificacion", "Cliente", "Genero", "Estado"
             }
         ));
+        jTblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblClientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTblClientes);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -371,6 +381,35 @@ public class JFrmClientes extends javax.swing.JFrame {
         InicializarModeloTabla();
         CargarJTabla();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void jTblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClientesMouseClicked
+        
+        int filaSeleccionada = jTblClientes.getSelectedRow();
+        
+        //casteo / casting - conversion de un tipo a otro tipo
+        String idenficacion = (String)modeloTablaClientes.getValueAt(filaSeleccionada, 0);
+        
+        int posicion = -1;
+        
+        for (int i = 0; i < ListadoClientes.size(); i++) {
+            
+            if (ListadoClientes.get(i).getIdentificacion().equals(idenficacion)){
+                posicion = i;
+                break;
+            }
+                
+        }
+        
+        if (posicion >= 0){
+            Cliente aux = ListadoClientes.get(posicion);
+            txtIdentificacion.setText(aux.getIdentificacion());
+            txtNombre.setText(aux.getNombre());
+            //ListadoClientes.remove(aux);
+            
+        }
+        
+        
+    }//GEN-LAST:event_jTblClientesMouseClicked
 
     /**
      * @param args the command line arguments
