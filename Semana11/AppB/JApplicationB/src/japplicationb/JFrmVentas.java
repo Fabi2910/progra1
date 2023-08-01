@@ -89,6 +89,7 @@ public class JFrmVentas extends javax.swing.JInternalFrame {
         LstClientes = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         LstClientesFiltrados = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Ventas");
@@ -104,6 +105,13 @@ public class JFrmVentas extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(LstClientesFiltrados);
 
+        jButton1.setText("Registrar Venta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,15 +120,23 @@ public class JFrmVentas extends javax.swing.JInternalFrame {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                    .addComponent(BtnVerClientes)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnVerClientes)
+                        .addGap(102, 102, 102)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane2))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(BtnVerClientes)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnVerClientes))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -136,11 +152,16 @@ public class JFrmVentas extends javax.swing.JInternalFrame {
         CargarClientesFiltrados();
     }//GEN-LAST:event_BtnVerClientesActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Main.IdVenta ++;
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnVerClientes;
     private javax.swing.JList<String> LstClientes;
     private javax.swing.JList<String> LstClientesFiltrados;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

@@ -37,6 +37,39 @@ public class JFrmClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Metodos locales">
     void ModificarCliente(){
         
+         int filaSeleccionada = jTblClientes.getSelectedRow();
+        
+        //casteo / casting - conversion de un tipo a otro tipo
+        String idenficacion = (String)modeloTablaClientes.getValueAt(filaSeleccionada, 0);
+        
+        int posicion = -1;
+        
+        for (int i = 0; i < ListadoClientes.size(); i++) {
+            
+            if (ListadoClientes.get(i).getIdentificacion().equals(idenficacion)){
+                posicion = i;
+                break;
+            }
+                
+        }
+        
+        if (posicion >= 0){
+            Cliente aux = ListadoClientes.get(posicion);  //ubicamos el objeto en la colección          
+            ListadoClientes.remove(aux); // removemos el objeto identificado
+            
+            //creamos el nuevo objeto con los datos modificados, rescribiendo los valores excepto la identificación
+            aux.setNombre(txtNombre.getText());
+            aux.setPrimerApellido(txtApe1.getText());
+            aux.setSegundoApellido(txtApe2.getText());
+            char Genero = cmbGenero.getSelectedIndex() == 0 ? 'M' : 'F';
+            aux.setGenero(Genero);
+            boolean Estado = rbnActivo.isSelected();
+            aux.setEstado(Estado);
+            ListadoClientes.add(aux);
+            
+        }
+        
+        
     }
     
     void EliminarCliente(){
@@ -59,9 +92,12 @@ public class JFrmClientes extends javax.swing.JFrame {
         
         if (posicion >= 0){
             Cliente aux = ListadoClientes.get(posicion);            
-            ListadoClientes.remove(aux);
+            ListadoClientes.remove(aux);           
             
         }
+        
+        
+        
         
         
     }
@@ -180,6 +216,7 @@ public class JFrmClientes extends javax.swing.JFrame {
 
         jLabel1.setText("Identificacion");
 
+        txtIdentificacion.setEditable(false);
         txtIdentificacion.setName(""); // NOI18N
 
         jLabel2.setText("Nombre");
@@ -205,6 +242,11 @@ public class JFrmClientes extends javax.swing.JFrame {
 
         btnModificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\5402373_write_modify_tool_edit_pen_icon.png")); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\285657_floppy_guardar_save_icon (1).png")); // NOI18N
         btnRegistrar.setText("Registrar");
@@ -383,6 +425,10 @@ public class JFrmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jTblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClientesMouseClicked
+        float n = (float) 0.00;
+        
+       
+        
         
         int filaSeleccionada = jTblClientes.getSelectedRow();
         
@@ -404,12 +450,30 @@ public class JFrmClientes extends javax.swing.JFrame {
             Cliente aux = ListadoClientes.get(posicion);
             txtIdentificacion.setText(aux.getIdentificacion());
             txtNombre.setText(aux.getNombre());
-            //ListadoClientes.remove(aux);
+            txtApe1.setText(aux.getPrimerApellido());
+            txtApe2.setText(aux.getSegundoApellido());
+            int indiceGenero = aux.getGenero() == 'M'?0:1;
+            cmbGenero.setSelectedIndex(indiceGenero);
+            boolean Estado = aux.isEstado();
+            if (Estado){
+                rbnActivo.setSelected(true);
+            }
+            else{
+                rbnInactivo.setSelected(true);
+            }
+            
+            
             
         }
         
         
     }//GEN-LAST:event_jTblClientesMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        ModificarCliente();
+        InicializarModeloTabla();
+        CargarJTabla();
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
