@@ -49,6 +49,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mnuItemClientes = new javax.swing.JMenuItem();
         mnuItemVentas = new javax.swing.JMenuItem();
+        mnuItemResumen = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +124,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(mnuItemVentas);
 
+        mnuItemResumen.setText("POS");
+        mnuItemResumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemResumenActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuItemResumen);
+
+        jMenuItem9.setText("Resumen");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem9);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -156,6 +174,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_mnuItemClientesActionPerformed
+
+    private void mnuItemResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemResumenActionPerformed
+     
+        JFrmPos oFrmPOS = new JFrmPos();
+        Desktop.add(oFrmPOS);
+        oFrmPOS.setVisible(true);
+        
+    }//GEN-LAST:event_mnuItemResumenActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        JFrmVentasSuperiores oFrmVentasSuperiores = new JFrmVentasSuperiores();
+        Desktop.add(oFrmVentasSuperiores);
+        oFrmVentasSuperiores.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,8 +240,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem mnuItemClientes;
+    private javax.swing.JMenuItem mnuItemResumen;
     private javax.swing.JMenuItem mnuItemVentas;
     // End of variables declaration//GEN-END:variables
 }
