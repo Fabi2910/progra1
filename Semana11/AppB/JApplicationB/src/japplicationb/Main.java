@@ -41,21 +41,21 @@ public class Main {
         Cliente aux = new Cliente();
         aux.setIdeCliente("112070954");
         aux.setNomCliente("Carlos Gonzalez Romero");
-        aux.setTipoCliente('M');
+        aux.setTipoCliente('N');
         
         ListadoClientes.add(aux);
         
         aux = new Cliente();
         aux.setIdeCliente("222070954");
         aux.setNomCliente("Mario Villalta Robles");
-        aux.setTipoCliente('M');
+        aux.setTipoCliente('N');
         
         ListadoClientes.add(aux);
         
         aux = new Cliente();
         aux.setIdeCliente("332070954");
         aux.setNomCliente("Rosibel Cordoba Castro");
-        aux.setTipoCliente('M');
+        aux.setTipoCliente('E');
         
         ListadoClientes.add(aux);
         

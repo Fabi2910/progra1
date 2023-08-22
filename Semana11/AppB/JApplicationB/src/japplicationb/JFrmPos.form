@@ -58,7 +58,6 @@
                               </Group>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TxtNomCliente" min="-2" pref="264" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Component id="TxtIdVenta" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
@@ -67,10 +66,15 @@
                                           <Component id="BtnBuscarCliente" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="TxtNomCliente" min="-2" pref="264" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="TxtTipoCliente" min="-2" pref="192" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -114,6 +118,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TxtNomCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtTipoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -309,6 +314,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnBuscarArticuloActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtTipoCliente">
     </Component>
   </SubComponents>
 </Form>

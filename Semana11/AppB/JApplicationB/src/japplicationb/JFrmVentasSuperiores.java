@@ -73,8 +73,10 @@ public class JFrmVentasSuperiores extends javax.swing.JInternalFrame {
                 
                 int IdVenta = i;
                 
+                char TipoCliente = cmbTipoCliente.getSelectedIndex() == 0 ? 'N' :'E';
+                
                 ListaFiltrada = (ArrayList<DetalleVenta>)Main.ListaDetalleVentaGuardada.stream()
-                                                .filter(dVenta -> dVenta.getIdVenta() == IdVenta)
+                                                .filter(dVenta -> dVenta.getIdVenta() == IdVenta && dVenta.getTipoCliente() == TipoCliente)
                                                 .collect(Collectors.toList());
                
                 
@@ -139,6 +141,8 @@ public class JFrmVentasSuperiores extends javax.swing.JInternalFrame {
         BtnObtener = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         TxtMontoSuperior = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cmbTipoCliente = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Filtro de Ventas");
@@ -154,6 +158,10 @@ public class JFrmVentasSuperiores extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Venta superior a");
 
+        jLabel2.setText("Tipo Cliente");
+
+        cmbTipoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacional", "Extranjero" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,8 +173,12 @@ public class JFrmVentasSuperiores extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(TxtMontoSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(426, Short.MAX_VALUE))
+                        .addComponent(TxtMontoSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(jLabel2)
+                        .addGap(44, 44, 44)
+                        .addComponent(cmbTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(108, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -178,7 +190,9 @@ public class JFrmVentasSuperiores extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(TxtMontoSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtMontoSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnObtener)
                 .addGap(18, 18, 18)
@@ -200,7 +214,9 @@ public class JFrmVentasSuperiores extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnObtener;
     private javax.swing.JList<String> LstVentas;
     private javax.swing.JTextField TxtMontoSuperior;
+    private javax.swing.JComboBox<String> cmbTipoCliente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

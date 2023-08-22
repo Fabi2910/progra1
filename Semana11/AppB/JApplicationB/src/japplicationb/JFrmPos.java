@@ -19,6 +19,8 @@ public class JFrmPos extends javax.swing.JInternalFrame {
      */
     Articulo auxArticulo;
     DefaultTableModel modeloTblDetalleVenta;
+    Cliente auxCliente;
+    
     
     public JFrmPos() {
         initComponents();
@@ -46,8 +48,11 @@ public class JFrmPos extends javax.swing.JInternalFrame {
         }
         
        if (posicion >= 0){
-           Cliente aux = Main.ListadoClientes.get(posicion);
-           TxtNomCliente.setText(aux.getNomCliente());
+           auxCliente = Main.ListadoClientes.get(posicion);
+           TxtNomCliente.setText(auxCliente.getNomCliente());
+           String leyendaTipoCliente = auxCliente.getTipoCliente() == 'N' ? "Nacional" : "Extranjero";
+                   
+           TxtTipoCliente.setText(leyendaTipoCliente);
            TxtCodArticulo.requestFocus();
        } else{
            JOptionPane.showMessageDialog(null,"Cliente no encontrado");
@@ -90,6 +95,7 @@ public class JFrmPos extends javax.swing.JInternalFrame {
         aux.setNomArticulo(TxtNomArticulo.getText());
         aux.setPrecioArticulo(auxArticulo.getPrecioArticulo());
         aux.setCantArticulo(Integer.parseInt(TxtCantArticulo.getText()));
+        aux.setTipoCliente(auxCliente.getTipoCliente());
         Double subTotal = aux.getPrecioArticulo() * aux.getCantArticulo();
         aux.setSubTotal(subTotal);
         Main.ListaDetalleVenta.add(aux);
@@ -191,6 +197,7 @@ public class JFrmPos extends javax.swing.JInternalFrame {
         BtnGuardar = new javax.swing.JButton();
         BtnBuscarCliente = new javax.swing.JButton();
         BtnBuscarArticulo = new javax.swing.JButton();
+        TxtTipoCliente = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Punto de venta");
@@ -305,14 +312,17 @@ public class JFrmPos extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel6))
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtNomCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(TxtIdVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(TxtIdeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
-                                            .addComponent(BtnBuscarCliente))))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(BtnBuscarCliente)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TxtNomCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(TxtTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 52, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel7)
@@ -344,7 +354,8 @@ public class JFrmPos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(TxtNomCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNomCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -410,8 +421,11 @@ public class JFrmPos extends javax.swing.JInternalFrame {
         TxtCodArticulo.setText("");
         TxtCodArticulo.requestFocus();
         
+        
     }//GEN-LAST:event_BtnRegistrarVentaActionPerformed
 
+    
+    
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
        
        int option = JOptionPane.showConfirmDialog(null, "¿Quieres guardar la venta?", "Confirmación", JOptionPane.YES_NO_OPTION);
@@ -432,6 +446,7 @@ public class JFrmPos extends javax.swing.JInternalFrame {
       
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarArticulo;
@@ -446,6 +461,7 @@ public class JFrmPos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtNomArticulo;
     private javax.swing.JTextField TxtNomCliente;
     private javax.swing.JTextField TxtPrecioArticulo;
+    private javax.swing.JTextField TxtTipoCliente;
     private javax.swing.JTextField TxtTotalVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -456,4 +472,5 @@ public class JFrmPos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
 }

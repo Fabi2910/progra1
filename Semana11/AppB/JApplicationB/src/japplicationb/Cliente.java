@@ -12,7 +12,7 @@ public class Cliente {
 
     private String IdeCliente;
     private String NomCliente;
-    private char TipoCliente; //V - VIP / N - Normal
+    private char TipoCliente; //N - Nacional / E - Extrangero
     
     public String getIdeCliente() {
         return IdeCliente;

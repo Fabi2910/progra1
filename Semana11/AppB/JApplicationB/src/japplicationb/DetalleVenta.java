@@ -24,6 +24,16 @@ public class DetalleVenta {
     
     private double SubTotal;
     
+    private char TipoCliente;
+
+    public char getTipoCliente() {
+        return TipoCliente;
+    }
+
+    public void setTipoCliente(char TipoCliente) {
+        this.TipoCliente = TipoCliente;
+    }
+    
     public int getIdVenta() {
         return IdVenta;
     }
